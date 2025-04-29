@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+    <title>Curve Rush</title>
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-start h-screen overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+<header class="pt-6 text-center flex-shrink-0">
+    <h1 class="text-4xl font-extrabold tracking-tight">Curve Rush</h1>
+    <p class="mt-2 text-gray-400">
+        Draw lines to guide the ball.
+        Use <kbd class="px-2 py-1 bg-gray-700 rounded">Space</kbd> to boost,
+        <kbd class="px-2 py-1 bg-gray-700 rounded">F</kbd> to freeze.
+    </p>
+</header>
+
+<div class="relative flex-shrink-0 w-[90vw] max-w-[800px] max-h-[calc(100vh-10rem)]">
+    <div class="w-full h-full aspect-[4/3]">
+        <canvas
+                id="gameCanvas"
+                width="800"
+                height="600"
+                class="w-full h-full block bg-gray-700 border-2 border-gray-600 rounded-xl shadow-2xl object-contain"
+        ></canvas>
+    </div>
+    <div
+            id="overlayScore"
+            class="absolute top-4 left-4 bg-black bg-opacity-50 px-3 py-1 rounded-md text-lg font-medium"
+    >Score: 0</div>
+</div>
+
+<!-- Mute button -->
+<button
+        id="muteBtn"
+        class="mt-4 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded text-white focus:outline-none"
+>
+    Mute Music
+</button>
+
+<footer class="mt-auto mb-4 text-gray-500 text-sm flex-shrink-0">
+    &copy; 2025 Your Name
+</footer>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
