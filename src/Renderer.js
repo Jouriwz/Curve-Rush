@@ -40,6 +40,46 @@ export default class Renderer {
         this.ctx.fill();
     }
 
+    drawTrajectory(ball, gravity, duration = 2, step = 0.1) {
+        const ctx = this.ctx;
+        let x  = ball.x,
+            y  = ball.y,
+            vx = ball.vx,
+            vy = ball.vy;
+
+        ctx.save();
+        ctx.strokeStyle = 'yellow';
+        ctx.lineWidth   = 1;
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+
+        for (let t = 0; t < duration; t += step) {
+            // simple Euler integration
+            vy += gravity * step;
+            x  += vx * step;
+            y  += vy * step;
+            ctx.lineTo(x, y);
+        }
+
+        ctx.stroke();
+        ctx.restore();
+    }
+
+    drawPath(points, { color = 'yellow', dash = [5,5], width = 1 } = {}) {
+        if (points.length < 2) return;
+        const ctx = this.ctx;
+        ctx.save();
+        ctx.strokeStyle = color;
+        ctx.lineWidth   = width;
+        ctx.setLineDash(dash);
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let p of points) ctx.lineTo(p.x, p.y);
+        ctx.stroke();
+        ctx.restore();
+    }
+
     // drawUI({ score, cooldown }) {
     //     // display score and drawing cooldown
     //     this.ctx.font = '18px sans-serif';
