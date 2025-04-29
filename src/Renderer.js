@@ -11,7 +11,7 @@ export default class Renderer {
 
     drawLines(lines) {
         // set stroke style once
-        this.ctx.strokeStyle = '#333';
+        this.ctx.strokeStyle = '#E5E7EB';
         this.ctx.lineWidth = 3;
         lines.forEach(line => {
             if (line.points.length < 2) return; // need at least two points
@@ -28,7 +28,7 @@ export default class Renderer {
         // draw the ball as a filled circle
         this.ctx.beginPath();
         this.ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-        this.ctx.fillStyle = '#888';
+        this.ctx.fillStyle = '#3ABFF8';
         this.ctx.fill();
     }
 
@@ -36,7 +36,7 @@ export default class Renderer {
         // draw target dot
         this.ctx.beginPath();
         this.ctx.arc(dot.x, dot.y, dot.radius, 0, Math.PI * 2);
-        this.ctx.fillStyle = 'blue';
+        this.ctx.fillStyle = '#FACC15';
         this.ctx.fill();
     }
 

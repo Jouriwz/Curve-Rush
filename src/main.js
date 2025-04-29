@@ -22,8 +22,8 @@ const game     = new Game({ physics, renderer, input, canvas });
 
 // --- Background music playlist ---
 const bgPlaylist = [
-    'src/sounds/bgMusic/Morning Sex - Ralph Castelli.mp3',
-    'src/sounds/bgMusic/Messages From the Stars - RAH Band.mp3'
+    'src/sounds/bgMusic/track1.mp3',
+    'src/sounds/bgMusic/track2.mp3'
 ];
 let bgIndex   = 0;
 const bgAudio = new Audio();
