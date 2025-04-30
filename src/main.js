@@ -68,11 +68,20 @@ muteBtn.addEventListener('click', () => {
 // Track time between frames for consistent motion
 let lastTime = performance.now();
 function loop(time) {
-    const dt = (time - lastTime) / 1000;
-    lastTime = time;
+    let dt = (time - lastTime) / 1000;
 
+    // If the tab is hidden, don’t advance physics—just reset the timer
+    if (document.hidden) {
+        lastTime = time;
+        return requestAnimationFrame(loop);
+    }
+
+    // Otherwise clamp dt so it never gets ridiculously large
+    dt = Math.min(dt, 0.1);  // max 100ms per frame
+
+    lastTime = time;
     game.update(dt);
-    game.render();
+    game.render(dt);
 
     // update score overlay from renderer state
     overlay.textContent = `Score: ${renderer.score}`;
